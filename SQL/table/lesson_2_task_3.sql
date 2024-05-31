@@ -1,0 +1,9 @@
+IF NOT EXISTS (
+    SELECT * 
+    FROM INFORMATION_SCHEMA.COLUMNS 
+    WHERE TABLE_NAME = 'students' 
+    AND COLUMN_NAME = 'examMark'
+)
+BEGIN
+    ALTER TABLE students ADD examMark INT;
+END
