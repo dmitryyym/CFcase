@@ -1,0 +1,9 @@
+IF NOT EXISTS (
+    SELECT * 
+    FROM INFORMATION_SCHEMA.COLUMNS 
+    WHERE TABLE_NAME = 'students' 
+    AND COLUMN_NAME = 'naprID'
+)
+BEGIN
+    ALTER TABLE students ADD naprID INT;
+END
