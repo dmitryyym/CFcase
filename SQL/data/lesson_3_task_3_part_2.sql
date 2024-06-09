@@ -1,3 +1,17 @@
-UPDATE students SET naprID = 1 WHERE id = 1
-UPDATE students SET naprID = 2 WHERE id = 2
-UPDATE students SET naprID = 3 WHERE id = 3
+MERGE INTO students AS s
+USING (
+    SELECT
+        s.id AS studID,
+        n.id AS naprID
+    FROM
+        students s
+    JOIN napr n
+    ON (
+        (s.id = 1 AND n.name = 'История') OR
+        (s.id = 2 AND n.name = 'Право') OR
+        (s.id = 3 AND n.name = 'Физика')
+    )
+) AS temp
+ON s.id = temp.studID
+WHEN MATCHED AND s.naprID IS NULL THEN
+    UPDATE SET s.naprID = temp.naprID;
