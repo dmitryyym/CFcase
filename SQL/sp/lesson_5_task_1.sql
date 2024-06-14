@@ -4,7 +4,7 @@ AS
 BEGIN
     IF NOT EXISTS (SELECT * FROM napr WHERE id = @naprID)
     BEGIN
-        Select 'Некорректный код направления' AS Ошибка
+        SELECT 'Некорректный код направления' AS Ошибка
         RETURN
     END
 	ELSE
