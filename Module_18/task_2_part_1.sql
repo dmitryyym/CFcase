@@ -15,6 +15,16 @@ RETURNS @table TABLE
 ) 
 AS
 BEGIN
-    -- Действия
+    INSERT INTO @table
+    SELECT 
+        user_id,
+        product_type,
+        user_type,
+        session_id,
+        status
+    FROM 
+        dbo.my_table
+    WHERE 
+        account_id = @account_id AND product_name = @product_name;
     RETURN;
 END;

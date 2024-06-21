@@ -17,6 +17,15 @@ LANGUAGE plpgsql
 AS $body$
 BEGIN
     RETURN QUERY
-    -- Действия
+    SELECT 
+        user_id,
+        product_type,
+        user_type,
+        session_id,
+        status
+    FROM 
+        my_table
+    WHERE 
+        my_table.account_id = account_id AND my_table.product_name = product_name;
 END;
 $body$;
