@@ -2,7 +2,7 @@
 CREATE FUNCTION main.func
 (
     account_id INT, 
-    session_id INT, 
+    in_session_id INT, 
     product_name VARCHAR
 ) 
 RETURNS TABLE
@@ -18,14 +18,10 @@ AS $body$
 BEGIN
     RETURN QUERY
     SELECT 
-        user_id,
-        product_type,
-        user_type,
-        session_id,
-        status
-    FROM 
-        my_table
-    WHERE 
-        my_table.account_id = account_id AND my_table.product_name = product_name;
+        1 AS user_id,
+        'prodcut_type' AS product_type,
+        'user_type' AS user_type,
+        in_session_id AS session_id,
+        'success' AS status;
 END;
 $body$;

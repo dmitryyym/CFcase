@@ -17,14 +17,10 @@ AS
 BEGIN
     INSERT INTO @table
     SELECT 
-        user_id,
-        product_type,
-        user_type,
-        session_id,
-        status
-    FROM 
-        dbo.my_table
-    WHERE 
-        account_id = @account_id AND product_name = @product_name;
+        1 AS user_id,
+        'product_type' AS product_type,
+        'user_type' AS user_type,
+        @session_id AS session_id,
+        'success' AS status;
     RETURN;
 END;
